@@ -7,7 +7,7 @@ export class createBooks1628754283947 implements MigrationInterface {
         name: "books",
         columns: [
           {
-            name: "id",
+            name: "book_id",
             type: "uuid",
             isPrimary: true,
           },

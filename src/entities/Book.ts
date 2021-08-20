@@ -5,12 +5,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
-import {v4 as uuid} from "uuid"
+import { v4 as uuid } from "uuid";
 
 @Entity("books")
 class Book {
   @PrimaryColumn()
-  readonly id: string;
+  readonly book_id: string;
 
   @Column()
   title: string;
@@ -21,7 +21,7 @@ class Book {
   @Column()
   picture: string;
 
-  @Column("text", {array: true})
+  @Column("text", { array: true })
   authors: string[];
 
   @CreateDateColumn()
@@ -30,8 +30,8 @@ class Book {
   @UpdateDateColumn()
   updated_at: string;
 
-  constructor(){
-    if(!this.id) this.id = uuid();
+  constructor() {
+    if (!this.book_id) this.book_id = uuid();
   }
 }
 

@@ -18,7 +18,7 @@ class CreateBookService {
     const bookExists = await booksRepository.findOne({
       title,
     });
-    if (bookExists) throw new Error("Book already in the system");
+    if (bookExists) throw new Error("Book's already in the system");
 
     const book = booksRepository.create({
       title,
