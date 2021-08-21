@@ -7,12 +7,12 @@ class DeleteBookService {
     const getBookService = new GetBookService();
     const isBook = getBookService.execute(id);
     if (isBook) {
-      const book = getBookService.execute(id);
+      const deletedBook = getBookService.execute(id);
 
       const booksRepositories = getCustomRepository(BooksRepositories);
       await booksRepositories.delete(id);
 
-      return book;
+      return deletedBook;
     }
   }
 }
