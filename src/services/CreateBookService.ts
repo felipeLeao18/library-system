@@ -1,7 +1,6 @@
 import { getCustomRepository } from "typeorm";
 
 import { BooksRepositories } from "../repositories/BooksRepositories";
-import { GetBookService } from "./GetBookService";
 
 interface IBookRequest {
   title: string;
