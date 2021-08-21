@@ -1,26 +1,26 @@
 import { getCustomRepository } from "typeorm";
 
 import { BooksRepositories } from "../repositories/BooksRepositories";
+import { GetBookService } from "./GetBookService";
 
 interface IBookRequest {
   title: string;
   publisher: string;
   picture: string;
-  authors: Array<string>;
+  authors: string[];
 }
 
 class CreateBookService {
   async execute({ title, publisher, picture, authors }: IBookRequest) {
-    const booksRepository = getCustomRepository(BooksRepositories);
-
+  
     if (!title) throw new Error("Books's name can't be empty");
-    
+
+    const booksRepository = getCustomRepository(BooksRepositories);
     const bookExists = await booksRepository.findOne({
       where: {
         title: title
       }
     });
-
     if (bookExists) throw new Error("Book's already in the system");
 
     const book = booksRepository.create({
@@ -34,4 +34,6 @@ class CreateBookService {
   }
 }
 
-export { CreateBookService };
+
+export { CreateBookService, IBookRequest };
+
